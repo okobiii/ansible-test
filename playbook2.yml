@@ -1,0 +1,30 @@
+---
+
+- name: manage webserver
+  hosts: jenkins
+  gather_facts: false
+  become: true
+  tasks:
+    - name: manage package
+      package:
+        name: apache2
+        state: present
+    - name: manage service
+      service:
+         name: apache2
+         state: started
+    - name: deploy site
+      copy:
+          src: index.html
+          dest: /var/www/html/
+
+- name: manage users
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: create and manage users
+      user:
+          name: tosin
+          state: present 
+
