@@ -7,16 +7,16 @@
   tasks:
     - name: manage package
       package:
-        name: apache2
-        state: present
+         name: apache2
+         state: present
     - name: manage service
       service:
          name: apache2
          state: started
     - name: deploy site
       copy:
-          src: index.html
-          dest: /var/www/html/
+         src: index.html
+         dest: /var/www/html/
 
 - name: manage users
   hosts: localhost
@@ -25,6 +25,6 @@
   tasks:
     - name: create and manage users
       user:
-          name: tosin
-          state: present 
+         name: tosin
+         state: present 
 
